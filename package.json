@@ -1,0 +1,15 @@
+{
+  "name": "simple-storage",
+  "version": "1.0.0",
+  "description": "Medium article about unit test",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "keywords": [],
+  "author": "ffakira",
+  "license": "GPL-3.0-or-later"
+}
