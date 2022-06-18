@@ -75,8 +75,8 @@ contract("SimpleStorage", ([deployer, ...accounts]) => {
   });
 
   it("should withdraw 0.5 eth", async() => {
-    const deposit = web3.utils.toBN(web3.utils.toWei("1", "ether"));
-    await this.contractInstance.depositEth(deposit, {from: deployer, value: deposit});
+    const amount = web3.utils.toBN(web3.utils.toWei("1", "ether"));
+    await this.contractInstance.depositEth(amount, {from: deployer, value: amount});
 
     let listDeposits = await this.contractInstance.listDeposits.call(deployer);
     expect(true).to.deep.equal(listDeposits["totalDeposits"].eq(web3.utils.toBN("1")));
@@ -88,5 +88,11 @@ contract("SimpleStorage", ([deployer, ...accounts]) => {
     expect(true).to.deep.equal(web3.utils.toBN(
       web3.utils.toWei("0.4", "ether")).eq(web3.utils.toBN(listDeposits["amount"])
     ));
+
+    await truffleAssert.fails(
+      this.contractInstance.withdrawEth(amount, {from: deployer}),
+      truffleAssert.ErrorType.REVERT,
+      "SimpleStorage: Invalid withdraw amount"
+    );
   });
 });
