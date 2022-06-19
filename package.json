@@ -7,9 +7,17 @@
     "test": "test"
   },
   "scripts": {
-    "test": "truffle test"
+    "test": "./node_modules/.bin/truffle test",
+    "ganache": "./node_modules/.bin/ganache"
   },
   "keywords": [],
   "author": "ffakira",
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "dependencies": {},
+  "devDependencies": {
+    "ganache": "^7.3.1",
+    "truffle": "^5.5.18",
+    "truffle-assertions": "^0.9.2",
+    "web3": "^1.7.3"
+  }
 }
